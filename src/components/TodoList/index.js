@@ -1,0 +1,29 @@
+import React from 'react'
+
+class TodoList extends React.PureComponent {
+  // static propTypes = {
+  //   children: PropTypes.node,
+  // }
+
+  // add
+
+  render () {
+    return (
+      <ul>
+        {this.props.todo.map((item) => (
+          <li
+            // onClick={onClick}
+            style={{
+              // textDecoration: completed ? 'line-through' : 'none'
+            }}
+          >
+            {/*{text}*/}
+            {item.text}
+          </li>
+        ))}
+
+      </ul>
+    )
+  }
+}
+export default TodoList
