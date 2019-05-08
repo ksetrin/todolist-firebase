@@ -1,37 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { todoAddAction } from '../store/actions'
 import ToDoList from '../components/ToDoList'
 import ToDoAdd from '../components/ToDoAdd'
 
 
 class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      profile: {
-        isOpen: false,
-      },
-      create: {
-        completed: false,
-        isOpen: false,
-      },
-    }
-  }
 
+  handleAddTodo = async (data) => {
+    const { todoAddAction } = this.props
+    await todoAddAction({text: data})
+  }
 
   render () {
     const { todo } =  this.props
     return (
       <div className="App">
         <ToDoList todo={todo} />
-        <ToDoAdd todo={todo} />
+        <ToDoAdd onAdd={this.handleAddTodo} />
       </div>
     );
   }
-
-
-
-
 }
 
 const mapStateToProps = (state) => {
@@ -40,8 +30,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-
-})
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  todoAddAction,
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

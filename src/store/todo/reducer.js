@@ -2,14 +2,18 @@ import {
   TODO_ADD
 } from './actions'
 
-export const initialState = {}
+export const initialState = [
+  {id: 'aaa', text: 'aaa'},
+  {id: 'bbb', text: 'bbb'},
+  {id: 'ccc', text: 'ccc'},
+]
 
 const mutations = {
   [TODO_ADD] (state, { data }) {
-    return {
+    return [
       ...state,
       data
-    }
+    ]
   },
 }
 

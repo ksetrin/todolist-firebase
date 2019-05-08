@@ -9,13 +9,7 @@ const reducer = combineReducers({
   todo
 })
 
-const initialState = {
-  todo: [
-    {id: 'aaa', text: 'aaa'},
-    {id: 'bbb', text: 'bbb'},
-    {id: 'ccc', text: 'ccc'},
-  ]
-}
+const initialState = {}
 
 const store = createStore(
   reducer,

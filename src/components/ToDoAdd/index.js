@@ -12,8 +12,10 @@ class ToDoAdd extends React.PureComponent {
     };
   }
 
-  handleSubmit = () => {
-    // this.setState({text: event.target.value})
+  handleSubmit = (event) => {
+    const {onAdd} = this.props
+    onAdd(this.state.text)
+    event.preventDefault()
   }
 
   handleChange = (event) => {
