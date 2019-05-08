@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
-import TodoList from '../components/TodoList';
+import ToDoList from '../components/ToDoList'
+import ToDoAdd from '../components/ToDoAdd'
 
 
 class App extends React.Component {
@@ -22,7 +23,8 @@ class App extends React.Component {
     const { todo } =  this.props
     return (
       <div className="App">
-        <TodoList todo={todo} />
+        <ToDoList todo={todo} />
+        <ToDoAdd todo={todo} />
       </div>
     );
   }

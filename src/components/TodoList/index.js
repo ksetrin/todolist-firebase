@@ -1,6 +1,6 @@
 import React from 'react'
 
-class TodoList extends React.PureComponent {
+class ToDoList extends React.PureComponent {
   // static propTypes = {
   //   children: PropTypes.node,
   // }
@@ -26,4 +26,4 @@ class TodoList extends React.PureComponent {
     )
   }
 }
-export default TodoList
+export default ToDoList
