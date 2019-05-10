@@ -5,19 +5,43 @@ class ToDoList extends React.PureComponent {
   //   children: PropTypes.node,
   // }
 
-  // add
+  draggedItem = null
+
+  onDragStart = (todo) => (event) => {
+    this.draggedItem = todo
+    // console.log('event', event)
+    // console.log('todo', todo)
+  }
+
+  onDragOver = (todo) => (event) => {
+    // this.draggedItem = todo
+    // console.log('event', event)
+    console.log('todo', todo.key)
+  }
+
+  onDragEnd = () => {
+    this.draggedItem = null
+  }
+
+  onClick = () => {
+
+  }
 
   render () {
+    // console.log(this.props.todoList)
     return (
       <ul>
-        {this.props.todo.map((item) => (
+        {this.props.todoList.map((item) => (
           <li
-            // onClick={onClick}
-            style={{
-              // textDecoration: completed ? 'line-through' : 'none'
-            }}
+            key={item.key}
+            style={{ height: 30 }}
+
+            draggable
+            onDragStart={this.onDragStart(item)}
+            onDragOver={this.onDragOver(item)}
+            onDragEnd={this.onDragEnd}
           >
-            {/*{text}*/}
+            <input type="checkbox" onClick={this.onClick}/>
             {item.text}
           </li>
         ))}

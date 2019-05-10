@@ -12,9 +12,10 @@ class ToDoAdd extends React.PureComponent {
     };
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     const {onAdd} = this.props
-    onAdd(this.state.text)
+    await onAdd(this.state)
+    this.setState({text: ''})
     event.preventDefault()
   }
 
