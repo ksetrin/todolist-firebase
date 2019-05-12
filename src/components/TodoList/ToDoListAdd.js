@@ -12,10 +12,10 @@ class ToDoAdd extends React.PureComponent {
     };
   }
 
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
     event.preventDefault()
     const {onAdd} = this.props
-    await onAdd(this.state.text)
+    onAdd(this.state.text)
     this.setState({text: ''})
   }
 
@@ -26,11 +26,12 @@ class ToDoAdd extends React.PureComponent {
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Add:
+        <div className="form">
+          {/*<label>*/}
           <input type="text" value={this.state.text} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
+          {/*</label>*/}
+          <input type="submit" value="ADD" />
+        </div>
       </form>
     )
   }

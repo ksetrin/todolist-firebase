@@ -8,15 +8,16 @@ class ToDoList extends React.PureComponent {
   // }
 
   render () {
-    const { items, onDelete } = this.props
+    const { items, onDelete, onDone } = this.props
     return (
       <ul>
         {items.map((value, index) => (
           <SortableItem
-            key={value.key}
+            key={value.id}
             index={index}
             value={value}
             onDelete={onDelete}
+            onDone={onDone}
           />
         ))}
       </ul>

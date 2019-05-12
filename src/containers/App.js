@@ -19,7 +19,7 @@ class App extends React.Component {
     // ccdc.map((iii) => console.log('todoList 1', iii))
 
     return (
-      <div className="App">
+      <div className="container">
         <ToDoList />
       </div>
     );

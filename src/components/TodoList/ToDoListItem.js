@@ -7,12 +7,12 @@ class ToDoListItem extends React.PureComponent {
   // }
 
   render () {
-    const { value, onDelete } = this.props
+    const { value, onDelete, onDone } = this.props
     return (
-      <li>
-        <input type="checkbox" onClick={this.onClick}/>
-        {value.text}
-        <input type="button" value='delete' onClick={onDelete(value.key)}/>
+      <li >
+        <input className="done-btn" type="checkbox" onClick={onDone(value)} checked={value.done}/>
+        <span className={value.done ? 'completed' : null}>{value.text}</span>
+        <input className="delete-btn" type="button" value='delete' onClick={onDelete(value)}/>
       </li>
     )
   }
