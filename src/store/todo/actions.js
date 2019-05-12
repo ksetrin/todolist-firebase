@@ -2,19 +2,24 @@ import { todoRef } from "../../config/firebase";
 export const TODO_FETCH = 'todo/fetch'
 
 export const todoAddAction = (todo) => async (dispatch) => {
-  todoRef.push().setWithPriority(todo, -new Date().getTime() - 10000);
+  todoRef.push().set(todo);
 };
 
 export const todoDeleteAction = (todoID) => async (dispatch) => {
   todoRef.child(todoID).remove();
 };
-
+// db.child("lastTaskUpdates").orderByChild("lastUpdate").limitToLast(10)
 export const todoFetchAction = () => async (dispatch) => {
   todoRef.on("value", (snapshot) => {
 
-    const result = snapshot.val()
-    // console.log('ddd', result)
-    const list = Object.entries(result).map((item) => ({key: item[0], ...item[1]}))
+    const result = snapshot.val() || {}
+
+    // console.log('todoFetchAction', result)
+
+    const list = Object.entries(result)
+      .map((item) => ({key: item[0], ...item[1]}))
+      .sort((a, b) => (a.order - b.order))
+
     // console.log('list', list)
 
     dispatch({
