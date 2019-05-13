@@ -17,9 +17,16 @@ import ToDoAdd from './ToDoListAdd'
 class ToDoListContainer extends React.Component {
 
   static propTypes = {
-    store: PropTypes.shape({
-      firestore: PropTypes.object
-    })
+    todoAddAction: PropTypes.func,
+    todoUpdateAction: PropTypes.func,
+    todoDeleteAction: PropTypes.func,
+    todoList: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+        id: PropTypes.string,
+        done: PropTypes.bool,
+      })
+    ),
   }
 
   reorderArray = (todoList, oldIndex, newIndex) => {
