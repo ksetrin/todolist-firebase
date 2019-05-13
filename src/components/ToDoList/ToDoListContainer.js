@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import uuidv4 from 'uuid/v4'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -13,7 +14,14 @@ import { todoListSelector } from '../../store/todo/selectors'
 import ToDoList from './ToDoList'
 import ToDoAdd from './ToDoListAdd'
 
-class ToDoListContainer extends React.PureComponent {
+class ToDoListContainer extends React.Component {
+
+  static propTypes = {
+    store: PropTypes.shape({
+      firestore: PropTypes.object
+    })
+  }
+
   reorderArray = (todoList, oldIndex, newIndex) => {
     const sortedTodoList = todoList.slice()
     sortedTodoList.splice(

@@ -1,6 +1,6 @@
 import React from 'react'
 
-class ToDoAdd extends React.PureComponent {
+class ToDoAdd extends React.Component {
   constructor() {
     super();
     this.state = {
