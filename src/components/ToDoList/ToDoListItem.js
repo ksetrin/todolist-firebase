@@ -2,10 +2,6 @@ import React from 'react'
 import {SortableElement} from 'react-sortable-hoc';
 
 class ToDoListItem extends React.PureComponent {
-  // static propTypes = {
-  //   children: PropTypes.node,
-  // }
-
   render () {
     const { value, onDelete, onDone } = this.props
     return (

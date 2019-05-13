@@ -1,10 +1,6 @@
 import React from 'react'
 
 class ToDoAdd extends React.PureComponent {
-  // static propTypes = {
-  //   children: PropTypes.node,
-  // }
-
   constructor() {
     super();
     this.state = {
@@ -27,9 +23,7 @@ class ToDoAdd extends React.PureComponent {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form">
-          {/*<label>*/}
           <input type="text" value={this.state.text} onChange={this.handleChange} />
-          {/*</label>*/}
           <input type="submit" value="ADD" />
         </div>
       </form>

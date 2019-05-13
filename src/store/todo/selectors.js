@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect'
 
 export const todoSelector = () => (state) => {
-  // console.log('state', state.firestore.data.todo || {})
   return state.firestore.data.todo || {}
 }
 

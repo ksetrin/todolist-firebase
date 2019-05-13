@@ -10,14 +10,10 @@ import {
   todoDeleteAction
 } from '../../store/actions'
 import { todoListSelector } from '../../store/todo/selectors'
-import SortableList from './ToDoList'
+import ToDoList from './ToDoList'
 import ToDoAdd from './ToDoListAdd'
 
 class ToDoListContainer extends React.PureComponent {
-  // static propTypes = {
-  //   children: PropTypes.node,
-  // }
-
   reorderArray = (todoList, oldIndex, newIndex) => {
     const sortedTodoList = todoList.slice()
     sortedTodoList.splice(
@@ -51,10 +47,17 @@ class ToDoListContainer extends React.PureComponent {
   }
 
   handleDoneTodo = (todo) => async (event) => {
-    todo.done = event.target.checked
     const { todoList, todoUpdateAction } = this.props
-    console.log('todoList', todoList)
-    await todoUpdateAction(todoList)
+    const todoListNew = todoList.map((item) => (
+      item.id === todo.id
+        ? {
+          ...item,
+          done: event.target.checked
+        }
+        : item
+    ))
+    console.log('todoListNew', todoListNew)
+    await todoUpdateAction(todoListNew)
   }
 
   render () {
@@ -62,7 +65,7 @@ class ToDoListContainer extends React.PureComponent {
     return (
       <div>
         <ToDoAdd onAdd={this.handleAddTodo} />
-        <SortableList
+        <ToDoList
           items={todoList}
           onDelete={this.handleDeleteTodo}
           onDone={this.handleDoneTodo}
@@ -72,7 +75,6 @@ class ToDoListContainer extends React.PureComponent {
     )
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
